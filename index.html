@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Flashcards</title>
+  <meta name="description" content="Flashcards for learning vocabulary">
+  <meta name="theme-color" content="#4f46e5">
+
+  <!-- PWA: the manifest tells phones how to install the app -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- iPhone/iPad: Safari uses these instead of parts of the manifest -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Flashcards">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Flashcards</h1>
+    <div class="stats">
+      <span id="counter">0 / 0</span>
+      <span id="known">Known: 0</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="card-area">
+      <div id="card" class="card" tabindex="0" aria-live="polite">
+        <div class="face front">
+          <p class="hint">Tap to flip</p>
+          <h2 id="word"></h2>
+        </div>
+        <div class="face back">
+          <h3 id="word-back"></h3>
+          <p id="explanation"></p>
+          <p class="example-label">Example</p>
+          <p id="example"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prev" aria-label="Previous card">&larr;</button>
+      <button id="learning" class="learning">Still learning</button>
+      <button id="gotit" class="gotit">Got it</button>
+      <button id="next" aria-label="Next card">&rarr;</button>
+    </div>
+
+    <div class="tools">
+      <button id="shuffle">Shuffle</button>
+      <button id="filter">Show: all</button>
+      <button id="reset">Reset progress</button>
+    </div>
+
+    <p id="done" class="done hidden">Nice work! You know every card in this set.</p>
+  </main>
+
+  <footer id="offline-note"></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
