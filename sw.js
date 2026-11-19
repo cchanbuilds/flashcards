@@ -1,7 +1,7 @@
 // Service worker: saves the app's files on the phone so it opens offline.
 // IMPORTANT: change this version number every time you update any file,
 // otherwise phones keep showing the old copy.
-const CACHE = 'flashcards-v2';
+const CACHE = 'flashcards-v3';
 
 const FILES = [
   './',

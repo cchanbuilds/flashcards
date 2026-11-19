@@ -139,6 +139,30 @@ card.addEventListener('touchend', (e) => {
   touchX = null;
 });
 
+// ---------- iPhone/iPad install guide ----------
+// Android's Chrome shows its own install popup. iOS has no such popup and
+// websites can't trigger one, so on iOS we show the steps ourselves.
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPads report as Mac
+const isInstalled = window.navigator.standalone === true ||
+  window.matchMedia('(display-mode: standalone)').matches;
+const INSTALL_KEY = 'flashcards-install-dismissed';
+
+function showInstallGuide() { $('ios-install').classList.remove('hidden'); }
+function hideInstallGuide() {
+  $('ios-install').classList.add('hidden');
+  try { localStorage.setItem(INSTALL_KEY, '1'); } catch {}
+}
+
+if (isIOS && !isInstalled) {
+  $('install-help').classList.remove('hidden'); // keep an "Install app" button for later
+  $('install-help').addEventListener('click', showInstallGuide);
+  $('ios-install-close').addEventListener('click', hideInstallGuide);
+  let dismissed = false;
+  try { dismissed = localStorage.getItem(INSTALL_KEY) === '1'; } catch {}
+  if (!dismissed) setTimeout(showInstallGuide, 1500); // short delay so the app shows first
+}
+
 // ---------- PWA: register the service worker (enables offline + install) ----------
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

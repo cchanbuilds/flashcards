@@ -111,4 +111,30 @@ button:active { transform: scale(0.96); }
 .done { color: var(--good); font-weight: 600; text-align: center; }
 .hidden { display: none; }
 
+/* iPhone install guide: a sheet that slides up from the bottom */
+.install-sheet {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: var(--card);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 30px rgba(30, 27, 75, 0.25);
+  padding: 22px 22px calc(22px + env(safe-area-inset-bottom));
+  text-align: center;
+  animation: slide-up 0.35s ease-out;
+  z-index: 10;
+}
+.install-sheet.hidden { display: none; }
+@keyframes slide-up { from { transform: translate(-50%, 100%); } to { transform: translate(-50%, 0); } }
+.install-icon { width: 56px; height: 56px; border-radius: 12px; }
+.install-sheet h2 { font-size: 1.2rem; margin: 8px 0 4px; }
+.install-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+.install-sheet ol { text-align: left; padding-left: 22px; display: grid; gap: 10px; line-height: 1.45; }
+.install-note { display: block; color: var(--muted); font-size: 0.82rem; }
+.share-icon { width: 20px; height: 20px; vertical-align: -4px; color: #007aff; }
+.install-close { margin-top: 16px; width: 100%; background: var(--accent); color: white; }
+
 footer { text-align: center; font-size: 0.8rem; color: var(--muted); padding: 10px; }

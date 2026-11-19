@@ -55,12 +55,30 @@
       <button id="shuffle">Shuffle</button>
       <button id="filter">Show: all</button>
       <button id="reset">Reset progress</button>
+      <button id="install-help" class="hidden">Install app</button>
     </div>
 
     <p id="done" class="done hidden">Nice work! You know every card in this set.</p>
   </main>
 
   <footer id="offline-note"></footer>
+
+  <!-- iPhone/iPad install guide (Safari can't show an install popup, so we explain the steps) -->
+  <div id="ios-install" class="install-sheet hidden" role="dialog" aria-labelledby="install-title">
+    <img src="icons/icon-192.png" alt="" class="install-icon">
+    <h2 id="install-title">Install Flashcards</h2>
+    <p class="install-sub">Add it to your Home Screen to use it like an app, even offline.</p>
+    <ol>
+      <li>
+        Tap the <strong>Share</strong> button
+        <svg class="share-icon" viewBox="0 0 24 24" aria-label="Share icon"><path d="M12 3v12M7 8l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 11v9h14v-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="install-note">In Safari it may be inside the <strong>•••</strong> menu.</span>
+      </li>
+      <li>Scroll down and tap <strong>Add to Home Screen</strong>. <span class="install-note">If you don't see it, tap <strong>View More</strong>.</span></li>
+      <li>Tap <strong>Add</strong>.</li>
+    </ol>
+    <button id="ios-install-close" class="install-close">Got it</button>
+  </div>
 
   <script src="app.js"></script>
 </body>
